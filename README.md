@@ -1,0 +1,1 @@
+# privacy-first-ocr-workspace
