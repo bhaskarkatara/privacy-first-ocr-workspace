@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 460" role="img">
+<title>Component map with trust boundary</title>
+<desc>Browser tier contains React UI, Tesseract.js worker, and API client. A trust boundary separates it from the Spring Boot backend below, which has filter chain, controllers, services, and repositories, connecting to PostgreSQL and optionally Redis.</desc>
+<style>
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #3d3d3a; }
+  .th { font-size: 14px; font-weight: 500; }
+  .ts { font-size: 12px; font-weight: 400; }
+  .c-purple rect { fill: #EEEDFE; stroke: #534AB7; }
+  .c-purple .th { fill: #3C3489; }
+  .c-purple .ts { fill: #534AB7; }
+  .c-teal rect { fill: #E1F5EE; stroke: #0F6E56; }
+  .c-teal .th { fill: #085041; }
+  .c-teal .ts { fill: #0F6E56; }
+  .c-coral rect { fill: #FAECE7; stroke: #993C1D; }
+  .c-coral .th { fill: #712B13; }
+  .c-gray rect { fill: #F1EFE8; stroke: #5F5E5A; }
+  .c-gray .th { fill: #444441; }
+  .c-gray .ts { fill: #5F5E5A; }
+  .arr { stroke: #73726c; stroke-width: 1.5; fill: none; }
+  @media (prefers-color-scheme: dark) {
+    text { fill: #c2c0b6; }
+    .c-purple rect { fill: #3C3489; stroke: #AFA9EC; }
+    .c-purple .th { fill: #EEEDFE; }
+    .c-purple .ts { fill: #CECBF6; }
+    .c-teal rect { fill: #085041; stroke: #5DCAA5; }
+    .c-teal .th { fill: #E1F5EE; }
+    .c-teal .ts { fill: #9FE1CB; }
+    .c-coral rect { fill: #712B13; stroke: #F0997B; }
+    .c-coral .th { fill: #FAECE7; }
+    .c-gray rect { fill: #444441; stroke: #B4B2A9; }
+    .c-gray .th { fill: #F1EFE8; }
+    .c-gray .ts { fill: #D3D1C7; }
+    .arr { stroke: #9c9a92; }
+  }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<g class="c-purple">
+  <rect x="40" y="40" width="600" height="130" rx="12" stroke-width="0.5" stroke-dasharray="6 4" fill="none"/>
+  <text class="th" x="52" y="60">Browser (client)</text>
+</g>
+
+<g class="c-purple">
+  <rect x="60" y="80" width="170" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="145" y="102" text-anchor="middle" dominant-baseline="central">React UI</text>
+  <text class="ts" x="145" y="120" text-anchor="middle" dominant-baseline="central">Views, state</text>
+</g>
+<g class="c-purple">
+  <rect x="250" y="80" width="180" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="102" text-anchor="middle" dominant-baseline="central">Tesseract.js worker</text>
+  <text class="ts" x="340" y="120" text-anchor="middle" dominant-baseline="central">Runs OCR</text>
+</g>
+<g class="c-purple">
+  <rect x="450" y="80" width="170" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="535" y="102" text-anchor="middle" dominant-baseline="central">API client</text>
+  <text class="ts" x="535" y="120" text-anchor="middle" dominant-baseline="central">HTTPS calls</text>
+</g>
+
+<line x1="40" y1="195" x2="176" y2="195" stroke="#993C1D" stroke-width="0.5" stroke-dasharray="6 4"/>
+<line x1="504" y1="195" x2="640" y2="195" stroke="#993C1D" stroke-width="0.5" stroke-dasharray="6 4"/>
+<g class="c-coral">
+  <rect x="180" y="178" width="320" height="34" rx="17" stroke-width="0.5"/>
+  <text class="th" x="340" y="197" text-anchor="middle" dominant-baseline="central">Trust boundary — no image data crosses</text>
+</g>
+
+<path d="M 535 136 L 535 210 L 115 210 L 115 268" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="527" y="160" text-anchor="end">HTTPS: JSON only</text>
+
+<g class="c-teal">
+  <rect x="40" y="220" width="600" height="130" rx="12" stroke-width="0.5" fill="none"/>
+  <text class="th" x="52" y="240">Backend (Spring Boot)</text>
+</g>
+
+<g class="c-teal">
+  <rect x="50" y="270" width="130" height="64" rx="6" stroke-width="0.5"/>
+  <text class="th" x="115" y="294" text-anchor="middle" dominant-baseline="central">Filter chain</text>
+  <text class="ts" x="115" y="314" text-anchor="middle" dominant-baseline="central">JWT check</text>
+</g>
+<g class="c-teal">
+  <rect x="200" y="270" width="130" height="64" rx="6" stroke-width="0.5"/>
+  <text class="th" x="265" y="294" text-anchor="middle" dominant-baseline="central">Controllers</text>
+  <text class="ts" x="265" y="314" text-anchor="middle" dominant-baseline="central">HTTP, DTOs</text>
+</g>
+<g class="c-teal">
+  <rect x="350" y="270" width="130" height="64" rx="6" stroke-width="0.5"/>
+  <text class="th" x="415" y="294" text-anchor="middle" dominant-baseline="central">Services</text>
+  <text class="ts" x="415" y="314" text-anchor="middle" dominant-baseline="central">Business logic</text>
+</g>
+<g class="c-teal">
+  <rect x="500" y="270" width="130" height="64" rx="6" stroke-width="0.5"/>
+  <text class="th" x="565" y="294" text-anchor="middle" dominant-baseline="central">Repositories</text>
+  <text class="ts" x="565" y="314" text-anchor="middle" dominant-baseline="central">JPA</text>
+</g>
+
+<line x1="182" y1="302" x2="198" y2="302" class="arr" marker-end="url(#arrow)"/>
+<line x1="332" y1="302" x2="348" y2="302" class="arr" marker-end="url(#arrow)"/>
+<line x1="482" y1="302" x2="498" y2="302" class="arr" marker-end="url(#arrow)"/>
+
+<line x1="245" y1="350" x2="245" y2="378" class="arr" marker-end="url(#arrow)"/>
+<line x1="435" y1="350" x2="435" y2="378" class="arr" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+
+<g class="c-gray">
+  <rect x="160" y="380" width="170" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="245" y="402" text-anchor="middle" dominant-baseline="central">PostgreSQL</text>
+  <text class="ts" x="245" y="420" text-anchor="middle" dominant-baseline="central">Primary store</text>
+</g>
+<g class="c-gray">
+  <rect x="350" y="380" width="170" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="435" y="402" text-anchor="middle" dominant-baseline="central">Redis</text>
+  <text class="ts" x="435" y="420" text-anchor="middle" dominant-baseline="central">Cache — optional</text>
+</g>
+</svg>

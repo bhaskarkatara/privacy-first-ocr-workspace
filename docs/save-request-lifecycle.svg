@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 560" role="img">
+<title>Save document request lifecycle</title>
+<desc>A vertical flow showing what happens when a user saves a document: React click, HTTPS POST, filter chain JWT check, controller DTO validation, service business rules with transaction, repository JPA persist, PostgreSQL INSERT, and a return arrow for the 201 Created response.</desc>
+<style>
+  text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: #3d3d3a; }
+  .th { font-size: 14px; font-weight: 500; }
+  .ts { font-size: 12px; font-weight: 400; }
+  .c-purple rect { fill: #EEEDFE; stroke: #534AB7; }
+  .c-purple .th { fill: #3C3489; }
+  .c-purple .ts { fill: #534AB7; }
+  .c-teal rect { fill: #E1F5EE; stroke: #0F6E56; }
+  .c-teal .th { fill: #085041; }
+  .c-teal .ts { fill: #0F6E56; }
+  .c-gray rect { fill: #F1EFE8; stroke: #5F5E5A; }
+  .c-gray .th { fill: #444441; }
+  .c-gray .ts { fill: #5F5E5A; }
+  .arr { stroke: #73726c; stroke-width: 1.5; fill: none; }
+  @media (prefers-color-scheme: dark) {
+    text { fill: #c2c0b6; }
+    .c-purple rect { fill: #3C3489; stroke: #AFA9EC; }
+    .c-purple .th { fill: #EEEDFE; }
+    .c-purple .ts { fill: #CECBF6; }
+    .c-teal rect { fill: #085041; stroke: #5DCAA5; }
+    .c-teal .th { fill: #E1F5EE; }
+    .c-teal .ts { fill: #9FE1CB; }
+    .c-gray rect { fill: #444441; stroke: #B4B2A9; }
+    .c-gray .th { fill: #F1EFE8; }
+    .c-gray .ts { fill: #D3D1C7; }
+    .arr { stroke: #9c9a92; }
+  }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#73726c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<g class="c-purple">
+  <rect x="220" y="40" width="240" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="62" text-anchor="middle" dominant-baseline="central">React UI</text>
+  <text class="ts" x="340" y="80" text-anchor="middle" dominant-baseline="central">User clicks Save</text>
+</g>
+<line x1="340" y1="96" x2="340" y2="112" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-purple">
+  <rect x="220" y="112" width="240" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="134" text-anchor="middle" dominant-baseline="central">HTTPS POST /api/documents</text>
+  <text class="ts" x="340" y="152" text-anchor="middle" dominant-baseline="central">JWT in Authorization header</text>
+</g>
+<line x1="340" y1="168" x2="340" y2="184" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-teal">
+  <rect x="220" y="184" width="240" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="206" text-anchor="middle" dominant-baseline="central">Filter chain</text>
+  <text class="ts" x="340" y="224" text-anchor="middle" dominant-baseline="central">JWT validated, principal set</text>
+</g>
+<line x1="340" y1="240" x2="340" y2="256" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-teal">
+  <rect x="220" y="256" width="240" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="278" text-anchor="middle" dominant-baseline="central">Controller</text>
+  <text class="ts" x="340" y="296" text-anchor="middle" dominant-baseline="central">DTO validated, mapped</text>
+</g>
+<line x1="340" y1="312" x2="340" y2="328" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-teal">
+  <rect x="220" y="328" width="240" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="350" text-anchor="middle" dominant-baseline="central">Service</text>
+  <text class="ts" x="340" y="368" text-anchor="middle" dominant-baseline="central">Rules + @Transactional</text>
+</g>
+<line x1="340" y1="384" x2="340" y2="400" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-teal">
+  <rect x="220" y="400" width="240" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="422" text-anchor="middle" dominant-baseline="central">Repository</text>
+  <text class="ts" x="340" y="440" text-anchor="middle" dominant-baseline="central">JPA saves entity</text>
+</g>
+<line x1="340" y1="456" x2="340" y2="472" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-gray">
+  <rect x="220" y="472" width="240" height="56" rx="6" stroke-width="0.5"/>
+  <text class="th" x="340" y="494" text-anchor="middle" dominant-baseline="central">PostgreSQL</text>
+  <text class="ts" x="340" y="512" text-anchor="middle" dominant-baseline="central">INSERT committed</text>
+</g>
+
+<path d="M 500 500 L 540 500 L 540 68 L 460 68" class="arr" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+<text class="ts" x="548" y="284">201 Created</text>
+<text class="ts" x="548" y="298">(response chains up)</text>
+</svg>
